@@ -1,6 +1,7 @@
 from scrapegraphai.graphs import SmartScraperGraph
 import os
 from dotenv import load_dotenv
+from typing import List
 
 load_dotenv()
 
@@ -27,22 +28,16 @@ class ArticleData(BaseModel):
     author: str = Field(description="The author's name")
     author_url: str = Field(description="The author's page URL full URL, homepage is 'https://quotes.toscrape.com'")
     description: str = Field(description="Brief explanation of the quote's meaning")
-    tags: list = Field(description="Quote tags")
+    tags: List = Field(description="Quote tags")
 
 # User prompt
-prompt="""
-Extract useful information about each quote in the page, including: 
-- content
-- author
-- author URL
-- tags
-- brief explanation
-"""
+prompt="Extract information about each quote in the page, including: content, author, author URL, tags, brief explanation"
+source="https://quotes.toscrape.com/"
 
 # Create the SmartScraperGraph instance
 smart_scraper_graph = SmartScraperGraph(
+    source=source,
     prompt=prompt,
-    source="https://quotes.toscrape.com/",
     config=graph_config,
     schema=ArticleData
 )
@@ -50,6 +45,7 @@ smart_scraper_graph = SmartScraperGraph(
 # Run the pipeline
 result = smart_scraper_graph.run()
 
+# Export data
 import json
 with open('data.json', 'w') as file:
     json.dump(result, file, indent=2)
