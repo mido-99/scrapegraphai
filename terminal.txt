@@ -10,7 +10,81 @@ Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
 Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
                     please specify the model_tokens parameter in the llm section of the graph configuration.
                     Using default token size: 8192
-...
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
+Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
+                    please specify the model_tokens parameter in the llm section of the graph configuration.
+                    Using default token size: 8192
 Max input tokens for model google_genai/gemini-3.1-flash-lite-preview not found,
                     please specify the model_tokens parameter in the llm section of the graph configuration.
                     Using default token size: 8192
@@ -25,7 +99,56 @@ processing graph instances:   0%|                                               
 --- (Fetching HTML from: .) ---
 --- Executing Fetch Node ---
 --- Executing ParseNode Node ---
-...
+--- Executing Fetch Node ---
+--- (Fetching HTML from: t) ---
+--- Executing Fetch Node ---
+--- Executing Fetch Node ---
+--- (Fetching HTML from: s) ---
+--- Executing ParseNode Node ---
+--- Executing Fetch Node ---
+--- (Fetching HTML from: .) ---
+--- Executing Fetch Node ---
+--- Executing Fetch Node ---
+--- (Fetching HTML from: c) ---
+--- Executing Fetch Node ---
+--- Executing ParseNode Node ---
+--- Executing Fetch Node ---
+--- (Fetching HTML from: :) ---
+--- (Fetching HTML from: t) ---
+--- Executing Fetch Node ---
+--- Executing ParseNode Node ---
+--- Executing Fetch Node ---
+--- (Fetching HTML from: o) ---
+--- Executing ParseNode Node ---
+--- (Fetching HTML from: /) ---
+--- (Fetching HTML from: o) ---
+--- Executing ParseNode Node ---
+--- (Fetching HTML from: m) ---
+--- (Fetching HTML from: /) ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- (Fetching HTML from: s) ---
+--- (Fetching HTML from: /) ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- Executing ParseNode Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
+--- Executing GenerateScraper Node ---
 --- Executing GenerateScraper Node ---
 --- Executing GenerateScraper Node ---
 --- Executing GenerateScraper Node ---

@@ -1,8 +1,8 @@
 import time
-
-from scrapegraphai.graphs import ScriptCreatorMultiGraph
 import os
 from dotenv import load_dotenv
+
+from scrapegraphai.graphs import ScriptCreatorMultiGraph
 
 load_dotenv()
 
@@ -26,8 +26,11 @@ graph_config = {
 prompt="""Create a script that extracts the quote's data from each page. Inclusing:
 content, author, author URL & tags.
 - The script should loop over pages' URLs following the site's pagination logic and return a list of dicts.
+- The script should implement smart delays to not get rate limited.
+- The script should log progress messages to debug easier
 """
-source=["https://quotes.toscrape.com/"]
+# sources=["https://quotes.toscrape.com/"]
+sources=["https://quotes.toscrape.com/"]
 
 # Define output schema
 from pydantic import BaseModel, Field
@@ -40,57 +43,21 @@ class ArticleData(BaseModel):
 
 OUTPUT_PATH = r"scalable_scraper.py"
 
-# ── Retry wrapper ─────────────────────────────────────────────────────────
-MAX_RETRIES = 3
-RETRY_DELAY = 10  # seconds to wait between retries (increase if hitting RPM limits)
+# Create & run the ScriptCreatorMultiGraph instance
+graph = ScriptCreatorMultiGraph(
+    prompt=prompt,
+    source=sources,
+    config=graph_config,
+    schema=ArticleData
+)
+result = graph.run()
 
-def run_with_retry(graph_config, sources, prompt, max_retries=MAX_RETRIES):
-    attempt = 0
-    last_error = None
-
-    while attempt < max_retries:
-        try:
-            print(f"[Attempt {attempt + 1}/{max_retries}] Running ScriptCreatorMultiGraph...")
-            graph = ScriptCreatorMultiGraph(
-                prompt=prompt,
-                source=sources,
-                config=graph_config,
-            )
-            result = graph.run()
-            return result  # success — return immediately
-
-        except Exception as e:
-            last_error = e
-            attempt += 1
-            error_str = str(e).lower()
-
-            # Stop immediately on rate limit errors — don't waste quota
-            if "rate limit" in error_str or "429" in error_str or "quota" in error_str:
-                print(f"[Rate limit hit] Stopping after {attempt} attempt(s). Error: {e}")
-                raise  # re-raise so you know it was a rate limit, not a bug
-
-            if attempt < max_retries:
-                print(f"[Retrying in {RETRY_DELAY}s] Error: {e}")
-                time.sleep(RETRY_DELAY)
-            else:
-                print(f"[Max retries reached] Last error: {e}")
-
-    raise last_error  # all attempts exhausted
-
-
-# ── Run & Save ────────────────────────────────────────────────────────────
-try:
-    result = run_with_retry(graph_config, source, prompt)
-
-    # result is a string of Python code
-    if result:
-        with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-            f.write(result)
-        print(f"\n✅ Scraper script saved to: {OUTPUT_PATH}")
-        print("\n--- Preview (first 500 chars) ---")
-        print(result[:500])
-    else:
-        print("⚠️ Graph ran but returned empty output.")
-
-except Exception as e:
-    print(f"\n❌ Failed: {e}")
+# Save output script
+if result:
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        f.write(result)
+    print(f"\n✅ Scraper script saved to: {OUTPUT_PATH}")
+    print("\n--- Preview (first 500 chars) ---")
+    print(result[:500])
+else:
+    print("⚠️ Graph ran but returned empty output.")

@@ -1,37 +1,56 @@
 import requests
 from bs4 import BeautifulSoup
+import time
+import logging
 import json
 
-def scrape_quotes(urls):
-    all_data = []
-    base_url = "http://quotes.toscrape.com"
-    
+logging.basicConfig(level=logging.INFO)
+
+def scrape_all_quotes(urls):
+    base_url = "https://quotes.toscrape.com"
+    all_extracted_data = []
+
     for start_url in urls:
         current_url = start_url
+        logging.info(f"Starting extraction from: {base_url + current_url}")
+        
         while current_url:
-            response = requests.get(base_url + current_url)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            quotes = soup.select(".quote")
-            for quote in quotes:
-                content = quote.select_one(".text").get_text(strip=True)
-                author = quote.select_one(".author").get_text(strip=True)
-                author_url = base_url + quote.select_one("span a")['href']
-                tags = [tag.get_text(strip=True) for tag in quote.select(".tag")]
+            logging.info(f"Scraping: {base_url + current_url}")
+            try:
+                response = requests.get(base_url + current_url)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, 'html.parser')
                 
-                all_data.append({
-                    "content": content,
-                    "author": author,
-                    "author_url": author_url,
-                    "tags": tags
-                })
+                quotes = soup.find_all('div', class_='quote')
+                for quote in quotes:
+                    text = quote.find('span', class_='text').text
+                    author = quote.find('small', class_='author').text
+                    author_url = base_url + quote.find('a')['href']
+                    tags = [tag.text for tag in quote.find_all('a', class_='tag')]
+                    
+                    all_extracted_data.append({
+                        "content": text,
+                        "author": author,
+                        "author_url": author_url,
+                        "tags": tags
+                    })
                 
-            next_button = soup.select_one(".next a")
-            current_url = next_button['href'] if next_button else None
-            
-    return all_data
+                next_button = soup.find('li', class_='next')
+                if next_button:
+                    current_url = next_button.find('a')['href']
+                    time.sleep(2)
+                else:
+                    current_url = None
+            except Exception as e:
+                logging.error(f"Error scraping {current_url}: {e}")
+                break
+                
+    return all_extracted_data
+
+def main():
+    target_pages = ["/page/1/"]
+    data = scrape_all_quotes(target_pages)
+    print(json.dumps(data, indent=4))
 
 if __name__ == "__main__":
-    target_urls = ["/page/1/"]
-    data = scrape_quotes(target_urls)
-    print(json.dumps(data, indent=4))
+    main()
