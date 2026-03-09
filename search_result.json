@@ -1,0 +1,36 @@
+{
+  "latest_version": "Python 3.15.0 alpha 6",
+  "release_date": "February 11, 2026",
+  "main_features": [
+    {
+      "feature": "PEP 799",
+      "description": "Introduction of a new high-frequency, low-overhead statistical sampling profiler along with a dedicated profiling package."
+    },
+    {
+      "feature": "PEP 798",
+      "description": "The ability to use unpacking in comprehensions."
+    },
+    {
+      "feature": "PEP 686",
+      "description": "UTF-8 is now the default encoding."
+    },
+    {
+      "feature": "PEP 782",
+      "description": "A new PyBytesWriter C API for creating Python bytes objects."
+    },
+    {
+      "feature": "Upgraded JIT compiler",
+      "description": "Provides performance improvements, specifically 3-4% on x86-64 Linux and 7-8% on AArch64 macOS."
+    },
+    {
+      "feature": "Improved error messages",
+      "description": "General enhancements to the clarity and detail of error messaging."
+    }
+  ],
+  "sources": [
+    "https://devguide.python.org/versions/",
+    "https://pythoninsider.blogspot.com/",
+    "https://pythoninsider.blogspot.com/2021/02/",
+    "https://www.pythoncentral.io/how-to-check-python-versions/"
+  ]
+}
