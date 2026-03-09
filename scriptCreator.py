@@ -23,23 +23,29 @@ graph_config = {
 }
 
 # User prompt & source
-prompt="""Create a script that extracts the quote's data from each page. Inclusing:
-content, author, author URL & tags.
+prompt="""Create a script that paginates pages & extracts books data from each book page. Inclusing:
+Title, URL, image URL, price, availability, stars rating, description, information (dict).
 - The script should loop over pages' URLs following the site's pagination logic and return a list of dicts.
 - The script should implement smart delays to not get rate limited.
 - The script should log progress messages to debug easier
 """
-# sources=["https://quotes.toscrape.com/"]
-sources=["https://quotes.toscrape.com/"]
+sources=["https://books.toscrape.com/", "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"]
 
 # Define output schema
 from pydantic import BaseModel, Field
+from typing import Dict, List, Any
 
-class ArticleData(BaseModel):
-    content: str = Field(description="Main quote content")
-    author: str = Field(description="The author's name")
-    author_url: str = Field(description="The author's page URL full URL, homepage is 'https://quotes.toscrape.com'")
-    tags: list = Field(description="Quote tags")
+class BookData(BaseModel):
+    title: str = Field(description="The full title of the book")
+    url: str = Field(description="The full URL of the book detail page (homepage is 'https://books.toscrape.com/')")
+    image_url: str = Field(description="The full URL of the book's cover image")
+    price: float = Field(description="The price of the book including currency symbol (e.g., £51.77)")
+    availability: str = Field(description="Availability status (e.g., 'In stock')")
+    stars_rating: int = Field(description="The star rating of the book (e.g., 1 or 3 out of 5)")
+    description: str = Field(description="A brief summary or description of the book's content")
+    information: Dict[str, Any] = Field(
+        description="A dictionary of the 'Product Information' table (e.g., UPC, Product Type, Tax, etc.)"
+    )
 
 OUTPUT_PATH = r"scalable_scraper.py"
 
@@ -48,7 +54,7 @@ graph = ScriptCreatorMultiGraph(
     prompt=prompt,
     source=sources,
     config=graph_config,
-    schema=ArticleData
+    schema=BookData
 )
 result = graph.run()
 
