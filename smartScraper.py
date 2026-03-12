@@ -23,23 +23,15 @@ graph_config = {
 # Define output schema
 from pydantic import BaseModel, Field
 
-class ArticleData(BaseModel):
-    content: str = Field(description="Main quote content")
-    author: str = Field(description="The author's name")
-    author_url: str = Field(description="The author's page URL full URL, homepage is 'https://quotes.toscrape.com'")
-    description: str = Field(description="Brief explanation of the quote's meaning")
-    tags: List = Field(description="Quote tags")
-
 # User prompt
-prompt="Extract information about each quote in the page, including: content, author, author URL, tags, brief explanation"
-source="https://quotes.toscrape.com/"
+prompt="Extract Most Popular Software Categories & top 3 apps from each category"
+source="https://www.g2.com/"
 
 # Create the SmartScraperGraph instance
 smart_scraper_graph = SmartScraperGraph(
     source=source,
     prompt=prompt,
     config=graph_config,
-    schema=ArticleData
 )
 
 # Run the pipeline
@@ -47,5 +39,5 @@ result = smart_scraper_graph.run()
 
 # Export data
 import json
-with open('data.json', 'w') as file:
+with open('data.json', 'w', encoding='utf8') as file:
     json.dump(result, file, indent=2)
